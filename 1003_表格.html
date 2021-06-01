@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<!--
+    表格由 <table> 标签来定义。每个表格均有若干行（由 <tr> 标签定义），每行被分割为若干单元格（由 <td> 标签定义）。
+    字母 td 指表格数据（table data），即数据单元格的内容。数据单元格可以包含文本、图片、列表、段落、表单、水平线、表格等等。
+
+    完整的表格结构：
+        <table border="0">
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td></>td>
+                </tr>
+            </>tfoot>
+            <tbody>
+                <tr>
+                    <td></>td>
+                </tr>
+            </>tbody>
+        </table>
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+</head>
+<body>
+    <!-- 这是一个最简陋的表格示例 -->
+    <h4>最原始最简单的表格：</h4>
+    <table border="1">
+        <tr>
+            <th>表头一</th>
+            <th>表头二</th>
+        </tr> <!-- 表头内的文本通常会被浏览器加粗 -->
+        <tr>
+            <td>二行一列</td>
+            <td>二行二列</td>
+        </tr>
+        <tr>
+            <td>三行一列</td>
+            <td>三行二列</td>
+        </tr>
+    </table>
+    <!-- <caption>标签：定义表格的标题 -->
+    <h4>带有标题的表格：</h4>
+    <table border="1">
+        <caption>Game</caption>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td>World of warcraft</td>
+            <td>MMORPG</td>
+        </tr>
+        <tr>
+            <td>Minecraft</td>
+            <td>Sandbox</td>
+        </tr>
+    </table>
+    <!-- "colspan"、"rowspan"属性，即“合并列”与“合并行” -->
+    <h4>"colspan"和"rowspan"属性，行列合并：</h4>
+    <table border="1">
+        <caption><b>GAME WORLD</b></caption>
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Address</th> <!-- 这个单元格将会占用两列的位置 -->
+        </tr>
+        <tr>
+            <td>ZijianChen</td>
+            <td>China</td>
+            <td>ChengDu</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Blizzard</td> <!-- 这个单元格将会占用两行的位置 -->
+            <td>Azeroth</td>
+            <td>Stormwind City</td>
+        </tr>
+        <tr>
+            <!--
+                因为上一行已经有“占用两列的单元格”了，所以第三行第一列实际上已经有内容了，
+                所以这里只需要再有两个<td>就可以刚好得到一个规整的表格。
+            -->
+            <td>None</td>
+            <td>None</td>
+        </tr>
+    </table>
+    <!--
+        单元格间距与边距：
+        "cellpadding" ==> 单元格间距，可以理解成单元格内内容到单元格内边线的距离；
+        "cellspacing" ==> 单元格间距，可以理解成各个单元格彼此之间的间距，与单元格内容无关。
+    -->
+    <h4>单元格间距：</h4>
+    <table border="1" cellpadding="15">
+        <tr>
+            <th>表头一</th>
+            <th>表头二</th>
+            <th>表头三</th>
+        </tr>
+        <tr>
+            <td>二行一列</td>
+            <td>二行二列</td>
+            <td>二行三列</td>
+        </tr>
+        <tr>
+            <td>三行一列</td>
+            <td>三行二列</td>
+            <td>三行三列</td>
+        </tr>
+    </table>
+    <h4>单元格边距：</h4>
+    <table border="1" cellspacing="15">
+        <tr>
+            <th>表头一</th>
+            <th>表头二</th>
+            <th>表头三</th>
+        </tr>
+        <tr>
+            <td>二行一列</td>
+            <td>二行二列</td>
+            <td>二行三列</td>
+        </tr>
+        <tr>
+            <td>三行一列</td>
+            <td>三行二列</td>
+            <td>三行三列</td>
+        </tr>
+    </table>
+    <!-- 利用<colgroup>和<col>标签对单元格样式格式化 -->
+    <h4>单元格格式化：</h4>
+    <table border="1">
+        <colgroup span="2" style="background-color: gray">
+            <col style="background-color: lightcoral"/>
+            <col style="background-color: lightgreen"/>
+            <col style="background-color: lightblue"/> <!-- 测试可以发现，<col>的效果会覆盖<colgroup>的效果 -->
+        </colgroup>
+        <tr>
+            <th>表头一</th>
+            <th>表头二</th>
+            <th>表头三</th>
+        </tr>
+        <tr>
+            <td>二行一列</td>
+            <td>二行二列</td>
+            <td>二行三列</td>
+        </tr>
+        <tr>
+            <td>三行一列</td>
+            <td>三行二列</td>
+            <td>三行三列</td>
+        </tr>
+    </table>
+</body>
+</html>
