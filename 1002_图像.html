@@ -28,6 +28,38 @@
         <p>
           以下图片修改了尺寸，比原图更大：<br/>
           <img src="./res/logo-social-sq.png" width="160" height="160"/>
+        </p><br/>
+
+        <!--
+            关于<map>和<area>标签
+            这两个标签总是同时使用，<area>标签总是在<map>标签之内。
+            两者配合的作用是在同一个img中定义多个点击区域，点击不同的位置，产生不同的响应。
+
+            笔记；
+                代码如下，首先是一个普通的<img>标签，有一个属性"usemap"，但是在没有写<map>标签的时候，这个属性是没有用的；
+
+                之后是与<img>同级的<map>标签，其中定义了"id"和"name"属性，这两个属性最后都定义，并且值一样，这个时候<img>的"usemap"
+                就可以与"map"相关联，至于浏览器使用"id"还是"name"这就取决于浏览器底层了;
+
+                最后是<area>标签，嵌套在<map>之内，属性有：
+                    "shape"决定了这个<area>的区域类型::
+                        "default" ==> 默认的值，指整个图片的像素范围
+                        "rect" ==> 一个矩形范围
+                        "circle" ==> 一个圆形范围
+                        "poly" ==> 一个多边形范围
+                    "coords"决定了不同"shape"下具体范围的坐标(注：原点坐标在图片左上角，单位皆为像素)：
+                        "rect" ==> "x1, y1, x2, y2" 分别是矩形左上角和右下角的坐标
+                        "circle" ==> "cx1, cx2, r" 分别是圆心的坐标和半径
+                        "poly" ==> "x1, y1, x2, y2, ... , xn, yn" 多边形的每个点的坐标（定义的时候请按照顺序来，顺时针逆时针都可以）
+        -->
+        <p>
+            以下示例，是关于&#60;map&#62;和&#60;area&#62;标签的：<br/>
+            <img src="./res/map_area.jpg" alt="三个几何图形" usemap="#geometric"/>
+            <map id="geometric" name="geometric">
+                <area shape="rect" coords="14, 14, 56, 52" href="./res/red.jpg" alt="红色矩形"/>
+                <area shape="circle" coords="118, 82, 25" href="./res/green.jpg" alt="绿色圆形"/>
+                <area shape="poly" coords="23, 80, 39, 86, 60, 70, 66, 104, 37, 117" href="./res/blue.jpg" alt="蓝色多边形"/>
+            </map>
         </p>
     </body>
 </html>
