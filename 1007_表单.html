@@ -36,9 +36,8 @@
         <optgroup> ==> 定义了选项组
         <option> ==> 定义下拉列表中的选项
         <button> ==> 定义一个点击按钮
-        <datalist> ==> H5新标签，制定一个预先定义的输入控件选项列表
-        <keygen> ==> H5新标签，定义了表单的密钥对生成器字段
-        <output> ==> H5新标签，定义一个计算结果
+        <datalist> ==> 制定一个预先定义的输入控件选项列表
+        <output> ==> 定义一个计算结果
 -->
 <head>
     <meta charset="UTF-8">
@@ -65,27 +64,371 @@
         <h3>&#60;input&#62;标签：</h3>
         <table>
             <tr>
-                <!-- value值即按钮上显示的内容 -->
+                <!--
+                    checked值决定复选框是否默认勾选
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                -->
+                <td>checkbox:</td>
+                <td>
+                    <input type="checkbox" checked="checked"/>
+                    <input type="checkbox"/>
+                    <input type="checkbox"/>
+                </td>
+            </tr>
+            <tr>
+                <!--
+                    单选选项，只有它们的"name"值一样时，才可以放在同一个组进行多选
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Radio:</td>
+                <td>
+                    魔兽世界：<input type="radio" name="game" value="魔兽世界"/>
+                    星际争霸：<input type="radio" name="game" value="星际争霸"/>
+                    暗黑破坏神：<input type="radio" name="game" value="暗黑破坏神"/>
+                </td>
+            </tr>
+
+            <tr><td colspan="2"><hr style="border:1px dashed; color: gray"/></td></tr>
+
+            <tr>
+                <!--
+                    "date"类型可以直接根据日历选择一个时间（年月日）
+                    支持列表：
+                        Chrome >= 20.0
+                        Edge >= 12.0
+                        FireFox >= 57.0
+                        Safari == None
+                        Opera >= 10.1
+                -->
+                <td>date:</td>
+                <td><input type="date"/></td>
+            </tr>
+            <tr>
+                <!--
+                    与"date"类似，多了时分秒（无时区）
+                    支持列表：
+                        Chrome >= 20.0
+                        Edge >= 13.0
+                        FireFox == None
+                        Safari == None
+                        Opera >= 10.1
+                -->
+                <td>datetime-local:</td>
+                <td><input type="datetime-local"/></td>
+            </tr>
+            <tr>
+                <!--
+                    与"date"类似，只不过仅能选择年、月
+                    支持列表：
+                        Chrome >= 25.0
+                        Edge >= 12.0
+                        FireFox == None
+                        Safari == None
+                        Opera >= 10.1
+                 -->
+                <td>Month:</td>
+                <td><input type="Month"/></td>
+            </tr>
+            <tr>
+                <!--
+                    类似"date"，只有时分秒（无时区）
+                    支持列表：
+                        Chrome >= 20.0
+                        Edge >= 12.0
+                        FireFox >= 57.0
+                        Safari == None
+                        Opera >= 10.1
+                 -->
+                <td>Time:</td>
+                <td><input type="time"/></td>
+            </tr>
+            <tr>
+                <!--
+                    类似"date"，周日年
+                    支持列表：
+                        Chrome >= 25.0
+                        Edge >= 12.0
+                        FireFox == None
+                        Safari == None
+                        Opera == 10.1
+                 -->
+                <td>Week:</td>
+                <td><input type="Week"/></td>
+            </tr>
+
+            <tr><td colspan="2"><hr style="border:1px dashed; color: gray"/></td></tr>
+
+            <tr>
+                <!--
+                    "min"和"max"决定了"number"的范围，[min, max]，
+                    "step"决定了微调器的步数，"value"即默认值
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Number:</td>
+                <td><input type="number" min="6" max="12" step="2" value="8"/></td>
+            </tr>
+            <tr>
+                <!--
+                    与"number"类似，只不过这个是一个滑动条
+                    注：经测试，min < 0 时，不生效
+                    支持列表：
+                        Chrome >= 4.0
+                        Edge >= 10.0
+                        FireFox >= 23.0
+                        Safari >= 3.1
+                        Opera >= 10.1
+                 -->
+                <td>Range:</td>
+                <td><input type="range" min="0" max="40" step="4" value="8"/></td>
+            </tr>
+
+            <tr><td colspan="2"><hr style="border:1px dashed; color: gray"/></td></tr>
+
+            <tr>
+                <!--
+                    顾名思义，该类型专门用来输入email
+                    支持列表：
+                        Chrome >= 20.0
+                        Edge >= 13.0
+                        FireFox == None
+                        Safari == None
+                        Opera >= 10.1
+                -->
+                <td>Email:</td>
+                <td><input type="Email"/></td>
+            </tr>
+            <tr>
+                <!--
+                    输入电话号码，只有符合"pattern"的字符串才能被提交，否则浏览器不会提交，会弹出警告信息
+                    该示例中合法的字符串示例:
+                        123-12-123
+                    支持列表：
+                        Chrome == All
+                        Edge >= 10.0
+                        FireFox == All
+                        Safari == All
+                        Opera >= 11.0
+                 -->
+                <td>Tel:</td>
+                <td><input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/></td>
+            </tr>
+            <tr>
+                <!--
+                    普通的文本
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Text:</td>
+                <td><input type="text"/></td>
+            </tr>
+            <tr>
+                <!--
+                    顾名思义，通配符
+                    支持列表：
+                        Chrome == All
+                        Edge >= 10.0
+                        FireFox == All
+                        Safari == All
+                        Opera >= 10.1
+                 -->
+                <td>Url:</td>
+                <td><input type="url"/></td>
+            </tr>
+            <tr>
+                <!--
+                    顾名思义，密码
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Password:</td>
+                <td><input type="password"/></td>
+            </tr>
+            <tr>
+                <!--
+                    按照输入的字符串来提交搜索，一定要有一个"name"属性，否则什么都不会被提交，"q"作为"name"属性值是很常见的。
+                    支持列表：
+                        Chrome >= 26.0
+                        Edge >= 10.0
+                        FireFox >= 4.0
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Search:</td>
+                <td><input type="Search" name="q"/></td>
+            </tr>
+
+            <tr><td colspan="2"><hr style="border:1px dashed; color: gray"/></td></tr>
+
+            <tr>
+                <!--
+                    “hidden”是隐藏的，通常用来提交一些数据库信息，比如这个示例中提交id；
+                    注：它虽然是隐藏的，但是是可见的，可以在浏览器的 Elements 中看到，所以不要用在有安全性要求的数据提交上
+                    支持列表：
+                        Chrome >= 1.0
+                        Edge == All
+                        FireFox >= 1.0
+                        Safari >= 1.0
+                        Opera >= 1.0
+                -->
+                <td>Hidden:</td>
+                <td><input type="hidden" id="custId" name="custId" value="3487"></td>
+            </tr>
+            <tr>
+                <!--
+                    value值即按钮上显示的内容
+                    支持列表：
+                        Chrome >= 1.0
+                        Edge == All
+                        FireFox >= 1.0
+                        Safari >= 1.0
+                        Opera == All
+                -->
                 <td>button:</td>
                 <td><input type="button" value="普通按钮"/></td>
             </tr>
             <tr>
                 <!--
-                    name值决定了这个属性提交时候的key
-                    checked值决定复选框是否默认勾选
+                    value值决定了拾色器的初始颜色，值必须是一个十六进制数值
+                    支持列表：
+                        Chrome >= 20.0
+                        Edge >= 38.0
+                        FireFox >= 29.0
+                        Safari >= 10.1
+                        Opera >= 11.01
                 -->
-                <td>checkbox:</td>
-                <td>
-                    <input type="checkbox" name="check0" checked="checked"/>
-                    <input type="checkbox" name="check1"/>
-                    <input type="checkbox" name="check2"/>
-                </td>
+                <td>color:</td>
+                <td><input type="color" value="#00FA9A"/></td>
             </tr>
             <tr>
-                <td>color:</td>
-                <td><input type="color"/></td>
+                <!--
+                    顾名思义，该类型专门用来提交用户本地文件的
+                    支持列表：
+                        Chrome >= 1.0
+                        Edge == All
+                        FireFox >= 1.0
+                        Safari >= 1.0
+                        Opera >= 1.0
+                -->
+                <td>File:</td>
+                <td><input type="file"/></td>
+            </tr>
+            <tr>
+                <!--
+                    相当于浏览器刷新
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Reset:</td>
+                <td><input type="reset"/></td>
+            </tr>
+            <tr>
+                <!--
+                    提交表单
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                 -->
+                <td>Submit:</td>
+                <td><input type="submit"/></td>
+            </tr>
+            <tr>
+                <!--
+                    "image"类型就是提交按钮，只不过它需要指定一张图片
+                    支持列表：
+                        Chrome == All
+                        Edge == All
+                        FireFox == All
+                        Safari == All
+                        Opera == All
+                -->
+                <td>image:</td>
+                <td><input type="image" src="./res/green.jpg" alt="提交" width="20" height="20"/></td>
             </tr>
         </table>
+
+        <h3>&#60;textarea&#62;标签：</h3>
+        <textarea rows="5" cols="50">这是一个文本域，文本域标签也有很多属性,文本域的属性用的时候上网查看即可。</textarea>
+
+        <h3>&#60;label&#62;标签：</h3>
+        <!--
+            <label>标签并不会有什么特殊样式，但是它为鼠标用户改进了可用性。如果在 label 元素内点击文本，就会触发此控件。
+            就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+
+            "for"属性决定了<label>与哪个表单元素相关联，要和关联的元素的id值一样才可以
+        -->
+        <label for="button">一个按钮</label>
+        <input type="button" name="normalButton" id="button" value="normalButton" style="width: 100px; height: 25px">
+
+        <h3>&#60;fieldset&#62;与&#60;legend&#62;标签：</h3>
+        <!-- 该标签可以将表单元素分组 -->
+        <fieldset>
+            <legend>联系方式</legend>
+            Name: <input type="text"><br>
+            Email: <input type="text">
+        </fieldset>
+
+        <h3>&#60;select&#62;、&#60;optgroup&#62;、&#60;option&#62;标签：</h3>
+        <!-- 很容易理解，浏览器打开看一下就明白了 -->
+        <select>
+            <optgroup label="MMORPG">
+                <option value="wow">魔兽世界</option>
+                <option value="dnd">龙与地下城</option>
+            </optgroup>
+            <optgroup label="FPS">
+                <option value="cod">使命召唤</option>
+                <option value="r6">彩虹六号</option>
+            </optgroup>
+        </select>
+
+        <h3>&#60;button&#62;标签：</h3>
+        <!--
+            这个标签与<input type="button">有些区别，
+            最大的区别是<button>中可以嵌套其它标签，比如<img>
+        -->
+        <button>我是一个普通按钮</button><br/>
+        这是一个图片按钮：<br/><button><img src="./res/red.jpg" width="45" height="45"/></button>
+
+        <h3>&#60;datalist&#62;标签：</h3>
+        <!--
+            类似下拉菜单和文本框的结合体
+        -->
+        <input list="games" name="game"/>
+        <datalist id="games">
+            <option value="魔兽世界">
+            <option value="星际争霸">
+            <option value="方舟">
+            <option value="我的世界">
+        </datalist>
     </form>
 </body>
 </html>
