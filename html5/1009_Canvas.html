@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<!--
+    从html文件前缀 >= 1009 的练习，全部是关于HTML5的练习。
+
+    <canvas>标签，canvas 有道翻译翻译为“帆布”，是一个名词，在HTML中可以将其理解为“画布”，
+    “画布”中的“画”，通常是用 JavaScript 来完成，“画本”本身只是一个载体、容器，
+    可以通过多种方法使用 canvas 绘制路径,盒、圆、字符以及添加图像。
+
+    浏览器支持：
+        Chrome >= 4.0
+        Internet Explorer >= 9.0
+        Firefox >= 2.0
+        Safari >= 3.1
+        Opera >= 9.0
+-->
+<head>
+    <meta charset="UTF-8">
+    <title><canvas>标签</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            // ********** 绘制矩形 **********
+            // 获取id为"myCanvas"的 canvas 元素
+            let rectCanvas = document.getElementById("rectCanvas");
+
+            // getContext("2d") 对象是内建的 HTML5 对象，拥有多种绘制路径、矩形、圆形、字符以及添加图像的方法。
+            let rectContext = rectCanvas.getContext("2d");
+            /*
+                设置fillStyle属性可以是CSS颜色，渐变，或图案。fillStyle 默认设置是#000000（黑色）。
+                fillRect(x, y, width, height) 方法定义了矩形当前的填充方式。
+                strokeRect()可以绘制一个空心矩形
+                注：fillRect()的参数，是起点坐标和宽高，而不是起点坐标和终点坐标
+            */
+            rectContext.beginPath() //beginPath() 相当于告诉JavaScript要开始画线了
+            rectContext.fillStyle="#FF0000";
+            rectContext.fillRect(20, 20, 70, 160);
+
+            rectContext.beginPath();
+            rectContext.strokeRect(110, 20, 70, 160);
+
+            // ********** 绘制线段 **********
+            let lineContext = document.getElementById("lineCanvas").getContext("2d");
+            lineContext.beginPath()
+            lineContext.moveTo(20, 20); // moveTo(x, y)可以理解成，将“画笔”移动到(x, y)坐标上
+            lineContext.lineTo(180, 180); // lineTo(x, y)可以理解成，“画笔”移动到(x, y)坐标，并且这次移动经过的路径画出一条线
+            lineContext.lineTo(180, 20);
+            lineContext.lineTo(20, 20);
+            lineContext.stroke(); //stroke()函数将之前执行的绘制功能的代码，落实在画布上
+
+            // ********** 绘制圆形 **********
+            let circleContext = document.getElementById("circleCanvas").getContext("2d");
+            circleContext.beginPath();
+            /*
+                context.arc(x, y, radius, start, end)
+                这个函数可以创建一条圆弧路径，参数：
+                    x ==> 圆心x坐标
+                    y ==> 圆心y坐标
+                    radius ==> 半径
+                    start ==> 起点弧度
+                    end ==> 终点弧度
+                注：弧度和角度不要混淆，一个360°的角度，其弧度值是2π，在数学中弧度通常不写单位，也可写为 rad，如：2πrad
+            */
+            circleContext.arc(100, 100, 50, 0, 2 * Math.PI);
+            circleContext.stroke();
+
+            // ********** 绘制文本 **********
+            let textContext = document.getElementById("textCanvas").getContext("2d");
+            textContext.beginPath();
+            textContext.font = "20px Arial"; // 决定文本的高度和字体
+            textContext.fillText("Hello JavaScript !", 10, 30); // 实心文本，注：后两个参数，决定文本的位置，是文本左下角，而不是左上角
+            textContext.strokeText("Hello JavaScript !", 10, 60);
+        }
+    </script>
+</head>
+<body>
+    <h3>以下是一个空内容的&#60;canvas&#62;画布</h3>
+    <h5>&#60;canvas&#62;默认是没有边框和内容的，所以为了方便观察，这里加上了边框</h5>
+    <canvas width="200" height="200" style="border: 1px solid black"></canvas><hr/>
+
+    <h3>利用JavaScript给画布绘制矩形</h3>
+    <canvas id="rectCanvas" width="200" height="200" style="border: 1px solid black"></canvas><hr/>
+
+    <h3>利用JavaScript给画布绘制线段</h3>
+    <canvas id="lineCanvas" width="200" height="200" style="border: 1px solid black"></canvas><hr/>
+
+    <h3>利用JavaScript给画布绘制圆形</h3>
+    <canvas id="circleCanvas" width="200" height="200" style="border: 1px solid black"></canvas><hr/>
+
+    <h3>利用JavaScript给画布绘制文字</h3>
+    <canvas id="textCanvas" width="200" height="200" style="border: 1px solid black"></canvas><hr/>
+</body>
+</html>
